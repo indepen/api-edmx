@@ -1,15 +1,15 @@
 _schema-version: "3.1"
-ID: cpapp
+ID: api-edmx
 description: A simple CAP project.
 version: 1.0.0
 modules:
-- name: cpapp-srv
+- name: api-edmx-srv
   type: nodejs
   path: gen/srv
   requires:
-  - name: cpapp-db
-  - name: cpapp-uaa
-  - name: cpapp-logs
+  - name: api-edmx-db
+  - name: api-edmx-uaa
+  - name: api-edmx-logs
   provides:
   - name: srv-api
     properties:
@@ -18,27 +18,27 @@ modules:
     buildpack: nodejs_buildpack
   build-parameters:
     builder: npm
-- name: cpapp-db-deployer
+- name: api-edmx-db-deployer
   type: hdb
   path: gen/db
   requires:
-  - name: cpapp-db
-  - name: cpapp-logs
+  - name: api-edmx-db
+  - name: api-edmx-logs
   parameters:
     buildpack: nodejs_buildpack
-- name: cpapp-destinations
+- name: api-edmx-destinations
   type: com.sap.application.content
   requires:
-  - name: cpapp-uaa
+  - name: api-edmx-uaa
     parameters:
       service-key:
-        name: cpapp-uaa-key
-  - name: cpapp-html5-repo-host
+        name: api-edmx-uaa-key
+  - name: api-edmx-html5-repo-host
     parameters:
       service-key:
-        name: cpapp-html5-repo-host-key
+        name: api-edmx-html5-repo-host-key
   - name: srv-api
-  - name: cpapp-destination
+  - name: api-edmx-destination
     parameters:
       content-target: true
   parameters:
@@ -46,28 +46,28 @@ modules:
       instance:
         destinations:
         - Authentication: OAuth2UserTokenExchange
-          Name: cpapp-app-srv
-          TokenServiceInstanceName: cpapp-uaa
-          TokenServiceKeyName: cpapp-uaa-key
+          Name: api-edmx-app-srv
+          TokenServiceInstanceName: api-edmx-uaa
+          TokenServiceKeyName: api-edmx-uaa-key
           URL: ~{srv-api/srv-url}
-          sap.cloud.service: cpapp.service
-        - Name: cpapp-html5-repo-host
-          ServiceInstanceName: cpapp-html5-repo-host
-          ServiceKeyName: cpapp-html5-repo-host-key
-          sap.cloud.service: cpapp.service
+          sap.cloud.service: api-edmx.service
+        - Name: api-edmx-html5-repo-host
+          ServiceInstanceName: api-edmx-html5-repo-host
+          ServiceKeyName: api-edmx-html5-repo-host-key
+          sap.cloud.service: api-edmx.service
         - Authentication: OAuth2UserTokenExchange
-          Name: cpapp-uaa
-          ServiceInstanceName: cpapp-uaa
-          ServiceKeyName: cpapp-uaa-key
-          sap.cloud.service: cpapp.service
+          Name: api-edmx-uaa
+          ServiceInstanceName: api-edmx-uaa
+          ServiceKeyName: api-edmx-uaa-key
+          sap.cloud.service: api-edmx.service
         existing_destinations_policy: update
   build-parameters:
     no-source: true
-- name: cpapp-app-content
+- name: api-edmx-app-content
   type: com.sap.application.content
   path: .
   requires:
-  - name: cpapp-html5-repo-host
+  - name: api-edmx-html5-repo-host
     parameters:
       content-target: true
   build-parameters:
@@ -88,12 +88,12 @@ modules:
     - npm run build:cf
     supported-platforms: []
 resources:
-- name: cpapp-db
+- name: api-edmx-db
   type: com.sap.xs.hdi-container
   parameters:
     service: hana
     service-plan: hdi-shared
-- name: cpapp-uaa
+- name: api-edmx-uaa
   type: org.cloudfoundry.managed-service
   parameters:
     config:
@@ -107,11 +107,11 @@ resources:
         role-template-references:
         - $XSAPPNAME.RiskViewer
       tenant-mode: dedicated
-      xsappname: cpapp-${org}-${space}
+      xsappname: api-edmx-${org}-${space}
     path: ./xs-security.json
     service: xsuaa
     service-plan: application
-- name: cpapp-destination
+- name: api-edmx-destination
   type: org.cloudfoundry.managed-service
   parameters:
     config:
@@ -127,12 +127,12 @@ resources:
           existing_destinations_policy: update
     service: destination
     service-plan: lite
-- name: cpapp-html5-repo-host
+- name: api-edmx-html5-repo-host
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
     service-plan: app-host
-- name: cpapp-logs
+- name: api-edmx-logs
   type: org.cloudfoundry.managed-service
   parameters:
     service: application-logs

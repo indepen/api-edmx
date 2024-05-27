@@ -1,5 +1,5 @@
 {
-  "name": "cpapp",
+  "name": "api-edmx",
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "repository": "<Add your repository here>",
@@ -54,6 +54,10 @@
       "[production]": {
         "db": "hana",
         "auth": "xsuaa"
+      },
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_BUSINESS_PARTNER"
       }
     }
   }
