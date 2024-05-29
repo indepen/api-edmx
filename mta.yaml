@@ -98,14 +98,14 @@ resources:
   parameters:
     config:
       role-collections:
-      - description: Manage Risks
-        name: RiskManager-${space}
+      - description: Manage API Risks
+        name: APIRiskManager-${space}
         role-template-references:
-        - $XSAPPNAME.RiskManager
-      - description: View Risks
-        name: RiskViewer-${space}
+        - $XSAPPNAME.APIRiskManager
+      - description: View API Risks
+        name: APIRiskViewer-${space}
         role-template-references:
-        - $XSAPPNAME.RiskViewer
+        - $XSAPPNAME.APIRiskViewer
       tenant-mode: dedicated
       xsappname: api-edmx-${org}-${space}
     path: ./xs-security.json

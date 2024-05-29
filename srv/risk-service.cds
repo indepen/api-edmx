@@ -4,22 +4,22 @@ service RiskService {
   entity Risks @(restrict : [
             {
                 grant : [ 'READ' ],
-                to : [ 'RiskViewer' ]
+                to : [ 'APIRiskViewer' ]
             },
             {
                 grant : [ '*' ],
-                to : [ 'RiskManager' ]
+                to : [ 'APIRiskManager' ]
             }
         ]) as projection on my.Risks;
     annotate Risks with @odata.draft.enabled;
   entity Mitigations @(restrict : [
             {
                 grant : [ 'READ' ],
-                to : [ 'RiskViewer' ]
+                to : [ 'APIRiskViewer' ]
             },
             {
                 grant : [ '*' ],
-                to : [ 'RiskManager' ]
+                to : [ 'APIRiskManager' ]
             }
         ]) as projection on my.Mitigations;
     annotate Mitigations with @odata.draft.enabled;
@@ -28,7 +28,7 @@ service RiskService {
     entity Suppliers @(restrict : [
             {
                 grant : [ 'READ' ],
-                to : [ 'RiskViewer', 'RiskManager' ]
+                to : [ 'APIRiskViewer', 'APIRiskManager' ]
             }
         ]) as projection on my.Suppliers;
 }

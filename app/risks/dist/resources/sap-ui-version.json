@@ -1,7 +1,7 @@
 {
-	"name": "ns.risks",
+	"name": "api.ns.risks",
 	"version": "0.0.1",
-	"buildTimestamp": "202405290447",
+	"buildTimestamp": "202405290537",
 	"scmRevision": "",
 	"libraries": []
 }

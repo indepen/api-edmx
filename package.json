@@ -38,16 +38,16 @@
           "users": {
             "risk.viewer@indepen.sap.com": {
               "password": "indepen",
-              "ID": "risk.viewer@indepen.sap.com",
+              "ID": "api.viewer@indepen.sap.com",
               "roles": [
-                "RiskViewer"
+                "APIRiskViewer"
               ]
             },
             "risk.manager@nurse3535.sap.com": {
               "password": "nurse3535",
-              "ID": "risk.manager@nurse3535.sap.com",
+              "ID": "api.manager@nurse3535.sap.com",
               "roles": [
-                "RiskManager"
+                "APIRiskManager"
               ]
             }
           }
