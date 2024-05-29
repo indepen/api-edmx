@@ -74,10 +74,10 @@ modules:
     build-result: resources
     requires:
     - artifacts:
-      - nsrisks.zip
-      name: nsrisks
+      - api-nsrisks.zip
+      name: api-nsrisks
       target-path: resources/
-- name: nsrisks
+- name: api-nsrisks
   type: html5
   path: app/risks
   build-parameters:
