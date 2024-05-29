@@ -10,6 +10,7 @@ using {  API_BUSINESS_PARTNER as bupa } from '../srv/external/API_BUSINESS_PART
     miti        : Association to Mitigations;
     impact      : Integer;
     criticality : Integer;
+    supplier    : Association to Suppliers;
   }
 
   entity Mitigations : managed {
